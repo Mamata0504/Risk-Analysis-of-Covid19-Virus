@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ 
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <div style="color:black" >
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2>Test yourself to Covid-19</h2>
+            <table border=1 id="#box" align='center'>
+            <tr>
+            <td>Gender(1:Male,0:Female)</td>
+            <td><input id="first" name="sex" type="number"></td>
+            </tr>
+            <tr>
+            <td>Pneumonia (1:No,2:Yes)</td>
+            <td><input id="second" name="pneumonia" required="required"></td>
+            </tr>
+            <tr>
+            <td>Age</td>
+            <td><input id="third" name="age" required="required"></td>
+            </tr>
+            <tr>
+            <td>Pregnancy</td>
+            <td><input id="fourth" name="pregnancy" required="required"></td>
+            </tr>
+            <tr>
+            <td>Diabetes </td>
+            <td><input id="fifth" name="diabetes" required="required"></td>
+            </tr>
+            <tr>
+            <td>Copd</td>
+            <td><input id="sixth" name="copd" required="required"></td>
+            </tr>
+            <tr>
+            <td>Asthma</td>
+            <td><input id="seventh" name="asthma" required="required"></td>
+            </tr>
+            <tr>
+            <td>Inmsupr</td>
+            <td><input id="eighth" name="inmsupr" required="required"></td>
+            </tr>
+            <tr>
+            <td>Hypertension</td>
+            <td><input id="ninth" name="hypertension" required="required"></td>
+            </tr>
+            <tr>
+            <td>Other Disease</td>
+            <td><input id="tenth" name="other_disease" required="required"></td>
+            </tr>
+            <tr>
+            <td>cardiovascular</td>
+            <td><input id="eleventh" name="cardiovascular" required="required"></td>
+            </tr>
+            <tr>
+            <td>Obesity</td>
+            <td><input id="twelveth" name="obesity" required="required"></td>
+            </tr>
+            <tr>
+            <td>Renal Chronic</td>
+            <td><input id="thirteenth" name="renal_chronic" required="required"></td>
+            </tr>
+            <tr>
+            <td>contact_other_covid</td>
+            <td><input id="fourteenth" name="contact_other_covid" required="required"></td>
+            </tr>          
+            <tr>
+             <td><button id="sub" type="submit" name="submit" value="Predict">Predict</button></td>
+            </table>
+        </form>
+        <br><h3>{{ prediction_text }}<h3>
+    </div>
+	
+	<style>
+		body {
+			background-image: url("../static/images/covid.jpg");
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: 100% 100%
+			}
+	</style>
+	
+    <style>
+        body {
+            background-color: transparent;
+            text-align: center;
+            padding: 0px;
+        }
+        
+        #research {
+            font-size: 28px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        #fuel {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #fuel:hover {
+            background-color: transparent;
+        }
+        
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: transparent;
+        }
+        
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: transparent;
+        }
+        
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #sub:hover {
+            background-color: darkcyan;
+        }
+        
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #second {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #third {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #fourth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#fifth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#sixth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#seventh {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#eighth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#ninth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#tenth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#eleventh {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#twelveth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#thirteenth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#fourteenth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		#sub {
+            border-radius: 10px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+		
+    </style>
+</body>
+
+</html>
